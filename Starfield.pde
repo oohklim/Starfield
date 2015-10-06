@@ -1,74 +1,91 @@
-//your code here
+Particle[] particles;
 void setup()
 {
-	//your code here
+   size(500, 500);
+   background(0);
+   colorMode(HSB, 100);
+   particles = new Particle[100];
+   particles[0] = new OddballParticle();
+   particles[1] = new JumboParticle();
+   for(int i = 2; i < particles.length; i++)
+   {
+     particles[i] = new NormalParticle();
+   }
 }
 void draw()
 {
-	//your code here
+   background(0);
+   for(int i = 0; i < particles.length; i++)
+   {
+     particles[i].show();
+     particles[i].move();
+   }
 }
-class NormalParticle
+class NormalParticle implements Particle
 {
-	//your code here
+   double x, y, speed, angle;
+   int c; //color
+   NormalParticle()
+   {
+     x = 250;
+     y = 250;
+     speed = Math.random() * 3 + 1; //[1, 3]
+     angle = Math.random() * 10 + 1; //[1, 10]
+     c = (int)(Math.random() * 100) + 1;
+   }
+   public void move()
+   {
+     x = x + Math.cos(angle) * speed;
+     y = y + Math.sin(angle) * speed;
+   }
+   public void show()
+   {
+     fill(c, 70, 90);
+     ellipse((float)x, (float)y, 10, 10);
+   }
 }
 interface Particle
 {
-	//your code here
+  public void show();
+  public void move();
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle
 {
-	//your code here
+   double x, y;
+   OddballParticle()
+   {
+     x = 250;
+     y = 250;
+   }
+  public void move() //need to create new move method
+  {
+  }
+  public void show()
+  {
+    fill(0, 0, 100);
+    ellipse((float)x, (float)y, 10, 10);
+  }
 }
-class JumboParticle //uses inheritance
+class JumboParticle implements Particle
 {
-	//your code here
+   double x, y, speed, angle;
+   int c; //color
+   JumboParticle()
+   {
+     x = 250;
+     y = 250;
+     speed = Math.random() * 3 + 1; //[1, 3]
+     angle = Math.random() * 10 + 1; //[1, 10]
+     c = (int)(Math.random() * 100) + 1;
+   }
+   public void move()
+   {
+     x = x + Math.cos(angle) * speed;
+     y = y + Math.sin(angle) * speed;
+   }
+   public void show()
+   {
+     fill(c, 70, 90);
+     ellipse((float)x, (float)y, 20, 20);
+   }
 }
-
-NormalParticle[] particles;
-// void setup()
-// {
-//   size(500, 500);
-//   background(0);
-//   colorMode(HSB, 100);
-//   particles = new NormalParticle[100];
-//   for(int i = 0; i < particles.length; i++)
-//   {
-//     particles[i] = new NormalParticle();
-//   }
-// }
-
-// void draw()
-// {
-//   background(0);
-//   for(int i = 0; i < particles.length; i++)
-//   {
-//     particles[i].show();
-//     particles[i].move();
-//   }
-// }
-
-// class NormalParticle
-// {
-//   double x, y, speed, angle;
-//   int c; //color
-//   NormalParticle()
-//   {
-//     x = 250;
-//     y = 250;
-//     speed = Math.random() * 3 + 1; //[1, 3]
-//     angle = Math.random() * 10 + 1; //[1, 10]
-//     c = (int)(Math.random() * 100) + 1;
-//   }
-//   void move()
-//   {
-//     x = x + Math.cos(angle) * speed;
-//     y = y + Math.sin(angle) * speed;
-//   }
-//   void show()
-//   {
-//     fill(c, 70, 90);
-//     ellipse((float)x, (float)y, 10, 10);
-//   }
-// }
-
-
