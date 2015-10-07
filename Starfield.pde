@@ -4,7 +4,7 @@ void setup()
    size(500, 500);
    background(0);
    colorMode(HSB, 100);
-   particles = new Particle[100];
+   particles = new Particle[500];
    particles[0] = new OddballParticle();
    particles[1] = new JumboParticle();
    for(int i = 2; i < particles.length; i++)
@@ -24,26 +24,27 @@ void draw()
 }
 class NormalParticle implements Particle
 {
-   double x, y, speed, theta;
-   int c, d; //color
+   double x, y, speed, theta, a; //rate of change of theta
+   int c, d; //color, diameter
    NormalParticle()
    {
      x = 250;
-     y = 250;
+     y = 350;
      speed = Math.random() * 3 + 1;
      theta = Math.random() * (2 * Math.PI);
      c = (int)(Math.random() * 100) + 1;
+     a = 0.05;
    }
    public void move()
    {
      x = x + Math.cos(theta) * speed;
      y = y + Math.sin(theta) * speed;
-     if(mousePressed == true)
+     theta = theta + a;
+     if(theta >= 2 * Math.PI || theta <= -2 * Math.PI)
      {
-       x = mouseX;
-       y = mouseY;
+       a = a * -1;
+       //theta = theta * -1;
      }
-     theta = theta + .02;
    }
    public void show()
    {
