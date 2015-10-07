@@ -33,7 +33,7 @@ class NormalParticle implements Particle
      speed = Math.random() * 3 + 1;
      theta = Math.random() * (2 * Math.PI);
      c = (int)(Math.random() * 100) + 1;
-     a = 0.05;
+     a = 0.04;
    }
    public void move()
    {
