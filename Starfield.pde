@@ -1,7 +1,7 @@
 Particle[] particles;
 void setup()
 {
-   size(800, 800);
+   size(1000, 1000);
    background(0);
    colorMode(HSB, 100);
    particles = new Particle[500];
