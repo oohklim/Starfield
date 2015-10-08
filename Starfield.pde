@@ -29,7 +29,7 @@ class NormalParticle implements Particle
    NormalParticle()
    {
      x = 400;
-     y = 600;
+     y = 450;
      speed = Math.random() * 3 + 1;
      theta = Math.random() * (2 * Math.PI);
      c = (int)(Math.random() * 100) + 1;
@@ -62,13 +62,13 @@ class OddballParticle implements Particle
    double x, y;
    OddballParticle()
    {
-     x = 250;
-     y = 250;
+     x = 400;
+     y = 450;
    }
   public void move()
   {
-     x = x + Math.random()*5 - 2;
-     y = y + Math.random()*5 - 2;
+     x = x + (int)(Math.random()*5) - 2;
+     y = y + (int)(Math.random()*5) - 2;
   }
   public void show()
   {
