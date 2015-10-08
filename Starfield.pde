@@ -29,18 +29,18 @@ class NormalParticle implements Particle
    NormalParticle()
    {
      x = 400;
-     y = 450;
+     y = 400;
      speed = Math.random() * 3 + 1;
      theta = Math.random() * (2 * Math.PI);
      c = (int)(Math.random() * 100) + 1;
-     a = 0.04;
+     a = 0.025;
    }
    public void move()
    {
      x = x + Math.cos(theta) * speed;
      y = y + Math.sin(theta) * speed;
      theta = theta + a;
-     if(theta >= 2 * Math.PI || theta <= -2 * Math.PI)
+     if(abs((float)x - 400) <= speed || abs((float)y - 400) <= speed)//if(theta >= 2 * Math.PI || theta <= -2 * Math.PI)
      {
        a = a * -1;
        //theta = theta * -1;
