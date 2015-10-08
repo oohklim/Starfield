@@ -1,7 +1,7 @@
 Particle[] particles;
 void setup()
 {
-   size(1000, 1000);
+   size(800, 800);
    background(0);
    colorMode(HSB, 100);
    particles = new Particle[500];
@@ -15,7 +15,7 @@ void setup()
 void draw()
 {
    fill(0, 25);
-   rect(-1, -1, 1001, 1001);
+   rect(-1, -1, 801, 801);
    for(int i = 0; i < particles.length; i++)
    {
      particles[i].show();
@@ -28,8 +28,8 @@ class NormalParticle implements Particle
    int c, d; //color, diameter
    NormalParticle()
    {
-     x = 500;
-     y = 700;
+     x = 400;
+     y = 600;
      speed = Math.random() * 3 + 1;
      theta = Math.random() * (2 * Math.PI);
      c = (int)(Math.random() * 100) + 1;
