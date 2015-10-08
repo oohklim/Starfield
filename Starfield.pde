@@ -15,7 +15,7 @@ void setup()
 void draw()
 {
    fill(0, 25);
-   rect(-1, -1, 501, 501);
+   rect(-1, -1, 1001, 1001);
    for(int i = 0; i < particles.length; i++)
    {
      particles[i].show();
@@ -28,8 +28,8 @@ class NormalParticle implements Particle
    int c, d; //color, diameter
    NormalParticle()
    {
-     x = 250;
-     y = 350;
+     x = 500;
+     y = 700;
      speed = Math.random() * 3 + 1;
      theta = Math.random() * (2 * Math.PI);
      c = (int)(Math.random() * 100) + 1;
