@@ -34,6 +34,7 @@ class NormalParticle implements Particle
      theta = Math.random() * (2 * Math.PI);
      c = (int)(Math.random() * 100) + 1;
      a = 0.025;
+     d = (int)(Math.random() * 5) + 6;
    }
    public void move()
    {
@@ -49,7 +50,7 @@ class NormalParticle implements Particle
    public void show()
    {
      fill(c, 70, 90);
-     ellipse((float)x, (float)y, 10, 10);
+     ellipse((float)x, (float)y, d, d);
    }
 }
 interface Particle
@@ -59,21 +60,33 @@ interface Particle
 }
 class OddballParticle implements Particle
 {
-   double x, y;
+   double x, y, theta, speed, d;
    OddballParticle()
    {
      x = 400;
-     y = 450;
+     y = 400;
+     speed = Math.random() * 3 + 2;
+     theta = Math.random() * (2 * Math.PI);
+     d = 0;
    }
   public void move()
   {
-     x = x + (int)(Math.random()*5) - 2;
-     y = y + (int)(Math.random()*5) - 2;
+     x = x + Math.cos(theta) * speed;
+     y = y + Math.sin(theta) * speed;
+     d = dist(400, 400, (float)x, (float)y)/10;
+     if(x > 800 || x < 0 || y > 800 || y < 0)
+     {
+       x = 400;
+       y = 400;
+       speed = Math.random() * 3 + 2;
+       theta = Math.random() * (2 * Math.PI);
+       d = 0;
+     }
   }
   public void show()
   {
     fill(0, 0, 100);
-    ellipse((float)x, (float)y, 15, 15);
+    ellipse((float)x, (float)y, (float)d, (float)d);
   }
 }
 class JumboParticle extends NormalParticle
