@@ -106,7 +106,7 @@ class OddballParticle implements Particle
      if(mousePressed == true)
      {
        //dist(400, 400, mouseX, mouseY)
-       theta = atan2((mouseY - 400),(mouseX - 400));
+       theta = atan2((mouseY - y),(mouseX - x));
      }
   }
   public void show()
