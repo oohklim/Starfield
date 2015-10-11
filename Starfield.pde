@@ -29,8 +29,8 @@ interface Particle
 }
 class NormalParticle implements Particle
 {
-   double x, y, speed, theta, a; //rate of change of theta
-   int c, d, r; //color, diameter, r determines if theta increases or decreases
+   double x, y, speed, theta, a, d; //rate of change of theta
+   int c, r; //color, diameter, r determines if theta increases or decreases
    NormalParticle()
    {
      x = 400;
@@ -47,7 +47,7 @@ class NormalParticle implements Particle
      }
      c = (int)(Math.random() * 100) + 1;
      a = 0.025;
-     d = (int)(Math.random() * 5) + 6;
+     d = (int)(Math.random() * 5) + 4;
    }
    public void move()
    {
@@ -69,7 +69,7 @@ class NormalParticle implements Particle
    public void show()
    {
      fill(c, 70, 90);
-     ellipse((float)x, (float)y, d, d);
+     ellipse((float)x, (float)y, (float)d, (float)d);
    }
 }
 class JumboParticle extends NormalParticle
@@ -105,8 +105,7 @@ class OddballParticle implements Particle
      }
      if(mousePressed == true)
      {
-       //dist(400, 400, mouseX, mouseY)
-       theta = atan2((mouseY - y),(mouseX - x));
+       theta = atan2((float)(mouseY - y),(float)(mouseX - x));
      }
   }
   public void show()
