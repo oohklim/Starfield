@@ -9,7 +9,14 @@ void setup()
    particles[1] = new JumboParticle();
    for(int i = 2; i < particles.length; i++)
    {
-     particles[i] = new NormalParticle();
+     if((int)(Math.random()*2) == 0)
+     {
+       particles[i] = new NormalParticle();
+     }
+     else
+     {
+       particles[i] = new ShootingParticle();
+     }
    }
 }
 void draw()
@@ -27,10 +34,10 @@ interface Particle
   public void show();
   public void move();
 }
-class NormalParticle implements Particle
+class NormalParticle implements Particle //rotating particles
 {
-   double x, y, speed, theta, a, d; //rate of change of theta
-   int c, r; //color, diameter, r determines if theta increases or decreases
+  double x, y, speed, theta, a, d; //rate of change of theta
+  int c, r; //color, r determines if theta increases or decreases
    NormalParticle()
    {
      x = 400;
@@ -49,7 +56,7 @@ class NormalParticle implements Particle
      a = 0.025;
      d = (int)(Math.random() * 5) + 4;
    }
-   public void move()
+  public void move()
    {
      x = x + Math.cos(theta) * speed;
      y = y + Math.sin(theta) * speed;
@@ -72,13 +79,36 @@ class NormalParticle implements Particle
      ellipse((float)x, (float)y, (float)d, (float)d);
    }
 }
+class ShootingParticle extends NormalParticle
+{
+   ShootingParticle()
+   {
+     d = 3;
+     theta = Math.random() * (2 * Math.PI);
+   }
+   public void move()
+   {
+     x = x + Math.cos(theta) * speed;
+     y = y + Math.sin(theta) * speed;
+     if(x > 800 || x < 0 || y > 800 || y < 0)
+     {
+       x = 400;
+       y = 400;
+     }
+   }
+   public void show()
+   {
+     fill(c, 40, 90);
+     ellipse((float)x, (float)y, (float)d, (float)d);
+   }
+}
 class JumboParticle extends NormalParticle
 {
    JumboParticle()
    {
      d = 30;
    }
-}
+}    
 class OddballParticle implements Particle
 {
    double x, y, theta, speed, d;
