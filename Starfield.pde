@@ -53,7 +53,7 @@ class NormalParticle implements Particle //rotating particles
        theta = Math.random() * (-2 * Math.PI);
      }
      c = (int)(Math.random() * 100) + 1;
-     a = 0.03;
+     a = 0.04;
      d = (int)(Math.random() * 5) + 4;
    }
   public void move()
