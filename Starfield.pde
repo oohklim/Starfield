@@ -96,7 +96,7 @@ class NormalParticle implements Particle //rotating particles
        }
        if(key == '2')
        {
-         speed = speed - 0.5;
+         speed = speed - 0.05;
        }
      }
    }
