@@ -72,6 +72,25 @@ class NormalParticle implements Particle //rotating particles
      {
        a = a * -1;
      }
+     if(keyPressed)
+     {
+       if(key == 's')
+       {
+         y = y + 5;
+       }
+       if(key == 'w')
+       {
+         y = y - 5;
+       }
+       if(key == 'a')
+       {
+         x = x - 5;
+       }
+       if(key == 'd')
+       {
+         x = x + 5;
+       }
+     }
    }
    public void show()
    {
@@ -94,6 +113,8 @@ class ShootingParticle extends NormalParticle
      {
        x = 400;
        y = 400;
+       speed = Math.random() * 3 + 1;
+       theta = Math.random() * (2 * Math.PI);
      }
    }
    public void show()
